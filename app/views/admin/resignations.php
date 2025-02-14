@@ -4,6 +4,16 @@
 ?>
 
 <div class="container-fluid mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h5 class="mb-0">
+            <i class="bi bi-list-ul me-2"></i>
+            Senarai Permohonan Berhenti
+        </h5>
+        <a href="/admin" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left me-2"></i>Kembali
+        </a>
+    </div>
+
     <?php if (isset($_SESSION['success'])): ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <?= $_SESSION['success'] ?>
@@ -21,12 +31,6 @@
     <?php endif; ?>
 
     <div class="card border-0 shadow-sm">
-        <div class="card-header bg-transparent border-0">
-            <h5 class="card-title mb-0">
-                <i class="bi bi-list-ul me-2"></i>
-                Senarai Permohonan Berhenti
-            </h5>
-        </div>
         <div class="card-body">
             <?php if (empty($resignations)): ?>
                 <div class="text-center py-4">

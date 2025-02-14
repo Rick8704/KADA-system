@@ -323,23 +323,33 @@
                     <div class="list-group list-group-flush">
                         <?php foreach (array_slice($resignations, 0, 5) as $resignation): ?>
                             <div class="list-group-item px-0">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h6 class="mb-1"><?= htmlspecialchars($resignation['name']) ?></h6>
-                                        <small class="text-muted">
-                                            <?= date('d/m/Y', strtotime($resignation['resignation_date'])) ?>
-                                        </small>
+                                <div class="d-flex align-items-center">
+                                    <div class="icon-circle bg-danger bg-opacity-10 me-3">
+                                        <i class="bi bi-person-x text-danger"></i>
                                     </div>
-                                    <form action="/admin/resignations/approve" method="POST" class="d-inline">
-                                        <input type="hidden" name="member_id" value="<?= $resignation['id'] ?>">
-                                        <button type="submit" class="btn btn-success btn-sm" 
-                                                onclick="return confirm('Adakah anda pasti untuk meluluskan permohonan ini?')">
-                                            <i class="bi bi-check-circle me-2"></i>Lulus
-                                        </button>
-                                    </form>
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h6 class="mb-0"><?= htmlspecialchars($resignation['name']) ?></h6>
+                                            <span class="badge bg-danger bg-opacity-10 text-danger small">
+                                                <i class="bi bi-calendar-event me-1"></i>
+                                                <?= date('d/m/Y', strtotime($resignation['resignation_date'])) ?>
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         <?php endforeach; ?>
+                        
+                        <?php if (count($resignations) > 5): ?>
+                            <div class="text-center mt-3">
+                                <a href="/admin/resignations" class="text-decoration-none">
+                                    <span class="badge bg-light text-dark">
+                                        +<?= count($resignations) - 5 ?> permohonan lagi
+                                        <i class="bi bi-arrow-right ms-1"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 <?php endif; ?>
             </div>
