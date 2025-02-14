@@ -15,7 +15,7 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="/">
-                <i class="bi bi-shield-check me-2"></i>KADA System
+                <i class="bi bi-shield-check me-2"></i>Koperasi KADA 
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
