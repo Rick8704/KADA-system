@@ -1,5 +1,12 @@
 <?php 
     $title = 'Dashboard Ahli';
+    
+    // Check if user has completed initial setup
+    if (isset($_SESSION['first_login']) && !isset($_SESSION['fees_paid'])) {
+        header('Location: /users/fees/initial');
+        exit;
+    }
+    
     require_once '../app/views/layouts/header.php';
 ?>
 

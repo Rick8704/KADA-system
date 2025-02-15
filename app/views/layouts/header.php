@@ -46,6 +46,30 @@
                         </a>
                     </div>
                 <?php endif; ?>
+
+                <?php if (isset($_SESSION['member_id'])): ?>
+                    <div class="d-flex align-items-center nav-right">
+                        <div class="user-info me-3">
+                            <span class="welcome-text">Selamat Datang,</span>
+                            <span class="username"><?= htmlspecialchars($_SESSION['member_name'] ?? '') ?></span>
+                        </div>
+                        <a href="/auth/logout" class="btn btn-logout">
+                            <i class="bi bi-box-arrow-right me-2"></i>Keluar
+                        </a>
+                    </div>
+                <?php endif; ?>
+
+                <?php if (isset($_SESSION['director_id'])): ?>
+                    <div class="d-flex align-items-center nav-right">
+                        <div class="user-info me-3">
+                            <span class="welcome-text">Selamat Datang,</span>
+                            <span class="username"><?= htmlspecialchars($_SESSION['director_name'] ?? '') ?></span>
+                        </div>
+                        <a href="/auth/logout" class="btn btn-logout">
+                            <i class="bi bi-box-arrow-right me-2"></i>Keluar
+                        </a>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </nav>

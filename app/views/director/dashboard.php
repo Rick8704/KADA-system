@@ -4,13 +4,6 @@
 ?>
 <link rel="stylesheet" href="/css/director.css">
 <div class="container-fluid mt-4">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <div>
-            <h2 class="mb-1">Dashboard Pengarah</h2>
-            <p class="text-muted mb-0">Selamat datang, <?= htmlspecialchars($_SESSION['director_name']) ?></p>
-        </div>
-    </div>
-
     <div class="row g-4 mb-4">
         <!-- Total Members -->
         <div class="col-xl-3 col-md-6">
@@ -41,6 +34,7 @@
             </div>
         </div>
 
+        <!-- Total Savings Card -->
         <div class="col-xl-3 col-md-6">
             <div class="card h-100 border-0 shadow-sm">
                 <div class="card-body">
@@ -53,6 +47,27 @@
                         <div class="flex-grow-1">
                             <h6 class="card-subtitle">Jumlah Keseluruhan Simpanan</h6>
                             <h2 class="card-title mb-0"><?= "RM " . number_format($metrics['total_savings'] ?? 0, 2) ?></h2>
+                        </div>
+                    </div>
+                
+                    <!-- Monthly Trend -->
+                    <div class="savings-trend mt-3">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <small class="text-muted">Trend Bulanan</small>
+                            <?php
+                                $lastMonth = $metrics['last_month_savings'] ?? 0;
+                                $currentMonth = $metrics['total_savings'] ?? 0;
+                                $percentageChange = $lastMonth > 0 ? (($currentMonth - $lastMonth) / $lastMonth) * 100 : 0;
+                                $trendClass = $percentageChange >= 0 ? 'text-success' : 'text-danger';
+                                $trendIcon = $percentageChange >= 0 ? 'bi-graph-up-arrow' : 'bi-graph-down-arrow';
+                            ?>
+                            <div class="<?= $trendClass ?> d-flex align-items-center">
+                                <i class="bi <?= $trendIcon ?> me-1"></i>
+                                <small><?= number_format(abs($percentageChange), 1) ?>%</small>
+                            </div>
+                        </div>
+                        <div class="progress" style="height: 4px;">
+                            <div class="progress-bar bg-primary" style="width: <?= min(100, max(0, $percentageChange)) ?>%"></div>
                         </div>
                     </div>
                 </div>
@@ -155,46 +170,9 @@
                         <h5 class="card-title mb-0">Trend Kewangan</h5>
                     </div>
                     <canvas id="financialTrendChart" height="280"></canvas>
-                    
-                    <!-- Add this insights section below the chart -->
-                    <div class="mt-4 pt-3 border-top">
-                        <div class="row g-3">
-                            <div class="col-6">
-                                <div class="d-flex align-items-center">
-                                    <div class="flex-shrink-0">
-                                        <div class="stats-trend-indicator rounded-circle bg-primary bg-opacity-10 p-2">
-                                            <i class="bi bi-graph-up text-primary"></i>
-                                        </div>
-                                    </div>
-                                    <div class="flex-grow-1 ms-3">
-                                        <div class="small text-muted">Pembiayaan Bulan Ini</div>
-                                        <div class="fw-medium">
-                                            RM <?= number_format(end($financialTrends['loans']), 2) ?>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="d-flex align-items-center">
-                                    <div class="flex-shrink-0">
-                                        <div class="stats-trend-indicator rounded-circle bg-success bg-opacity-10 p-2">
-                                            <i class="bi bi-piggy-bank text-success"></i>
-                                        </div>
-                                    </div>
-                                    <div class="flex-grow-1 ms-3">
-                                        <div class="small text-muted">Simpanan Bulan Ini</div>
-                                        <div class="fw-medium">
-                                            RM <?= number_format(end($financialTrends['savings']), 2) ?>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
-
 
         <!-- Loan Approvals -->
         <div class="col-xl-4">

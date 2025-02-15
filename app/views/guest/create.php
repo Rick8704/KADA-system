@@ -120,7 +120,7 @@
 
                         <!-- Step 2: Employment Details -->
                         <div class="step-content" data-step="2">
-                            <h4 class="mt-3 mb-4 text-success"><i class="bi bi-briefcase me-2"></i>Maklumat Pekerjaan Pemohon</h4>
+                            <h4 class="mt-3 mb-4 text-success"><i class="bi bi-briefcase me-2"></i>Maklumat Pekerjaan</h4>
                             <div class="row g-3">
                                 <div class="col-md-3">
                                     <label class="form-label fw-bold">Gaji Bulanan (RM)</label>
@@ -133,456 +133,13 @@
                                 <div class="col-md-3">
                                     <label class="form-label fw-bold">Gred</label>
                                     <div class="grade-search-container">
-                                        <input type="text" name="grade" id="gradeInput" class="form-control" 
-                                               placeholder="Pilih gred..." required readonly>
-                                        <input type="text" id="gradeSearch" class="form-control mb-2" 
-                                               placeholder="Cari gred..." 
-                                               style="display: none;"
-                                               oninput="filterGrades(this.value)">
-                                        <select class="form-select grade-select" id="gradeSelect" size="6" style="display: none;">
-                                            <option value="" disabled selected>Pilih</option>
-                                            <option value="VU1">VU1</option>
-                                            <option value="VU2">VU2</option>
-                                            <option value="VU3">VU3</option>
-                                            <option value="VU4">VU4</option>
-                                            <option value="VU5">VU5</option>
-                                            <option value="VU6">VU6</option>
-                                            <option value="VU7">VU7</option>
-                                            <option value="VK2">VK2</option>
-                                            <option value="VK3">VK3</option>
-                                            <option value="VK4">VK4</option>
-                                            <option value="VK5">VK5</option>
-                                            <option value="VK6">VK6</option>
-                                            <option value="VK7">VK7</option>
-                                            <option value="A54">A54</option>
-                                            <option value="A52">A52</option>
-                                            <option value="A48">A48</option>
-                                            <option value="A44">A44</option>
-                                            <option value="A41">A41</option>
-                                            <option value="A40">A40</option>
-                                            <option value="A38">A38</option>
-                                            <option value="A36">A36</option>
-                                            <option value="A29">A29</option>
-                                            <option value="A28">A28</option>
-                                            <option value="A26">A26</option>
-                                            <option value="A22">A22</option>
-                                            <option value="A20">A20</option>
-                                            <option value="A19">A19</option>
-                                            <option value="A13">A13</option>
-                                            <option value="A14">A14</option>
-                                            <option value="A12">A12</option>
-                                            <option value="A11">A11</option>
-                                            <option value="A4">A4</option>
-                                            <option value="A3">A3</option>
-                                            <option value="A1">A1</option>
-                                            <option value="AA36">AA36</option>
-                                            <option value="AA22">AA22</option>
-                                            <option value="AA20">AA20</option>
-                                            <option value="AA19">AA19</option>
-                                            <option value="AA13">AA13</option>
-                                            <option value="AB40">AB40</option>
-                                            <option value="AB38">AB38</option>
-                                            <option value="AB36">AB36</option>
-                                            <option value="AB30">AB30</option>
-                                            <option value="AB29">AB29</option>
-                                            <option value="AB26">AB26</option>
-                                            <option value="AB22">AB22</option>
-                                            <option value="AB19">AB19</option>
-                                            <option value="AL54">AL54</option>
-                                            <option value="AL52">AL52</option>
-                                            <option value="AL48">AL48</option>
-                                            <option value="AL44">AL44</option>
-                                            <option value="AL41">AL41</option>
-                                            <option value="AT54">AT54</option>
-                                            <option value="AT53">AT53</option>
-                                            <option value="AT52">AT52</option>
-                                            <option value="AT51">AT51</option>
-                                            <option value="AT48">AT48</option>
-                                            <option value="AT47">AT47</option>
-                                            <option value="AT44">AT44</option>
-                                            <option value="AT43">AT43</option>
-                                            <option value="AT41">AT41</option>
-                                            <option value="B54">B54</option>
-                                            <option value="B53">B53</option>
-                                            <option value="B52">B52</option>
-                                            <option value="B51">B51</option>
-                                            <option value="B48">B48</option>
-                                            <option value="B47">B47</option>
-                                            <option value="B44">B44</option>
-                                            <option value="B43">B43</option>
-                                            <option value="B42">B42</option>
-                                            <option value="B41">B41</option>
-                                            <option value="B40">B40</option>
-                                            <option value="B39">B39</option>
-                                            <option value="B38">B38</option>
-                                            <option value="B37">B37</option>
-                                            <option value="B32">B32</option>
-                                            <option value="B31">B31</option>
-                                            <option value="B30">B30</option>
-                                            <option value="B29">B29</option>
-                                            <option value="B28">B28</option>
-                                            <option value="B27">B27</option>
-                                            <option value="B26">B26</option>
-                                            <option value="B25">B25</option>
-                                            <option value="B22">B22</option>
-                                            <option value="B21">B21</option>
-                                            <option value="B19">B19</option>
-                                            <option value="B20">B20</option>
-                                            <option value="B14">B14</option>
-                                            <option value="B13">B13</option>
-                                            <option value="B11">B11</option>
-                                            <option value="C54">C54</option>
-                                            <option value="C52">C52</option>
-                                            <option value="C48">C48</option>
-                                            <option value="C44">C44</option>
-                                            <option value="C41">C41</option>
-                                            <option value="C40">C40</option>
-                                            <option value="C38">C38</option>
-                                            <option value="C32">C32</option>
-                                            <option value="C29">C29</option>
-                                            <option value="C28">C28</option>
-                                            <option value="C26">C26</option>
-                                            <option value="C22">C22</option>
-                                            <option value="C19">C19</option>
-                                            <option value="C14">C14</option>
-                                            <option value="C11">C11</option>
-                                            <option value="DG54">DG54</option>
-                                            <option value="DG52">DG52</option>
-                                            <option value="DG48">DG48</option>
-                                            <option value="DG44">DG44</option>
-                                            <option value="DG42">DG42</option>
-                                            <option value="DG41">DG41</option>
-                                            <option value="DG40">DG40</option>
-                                            <option value="DG38">DG38</option>
-                                            <option value="DG34">DG34</option>
-                                            <option value="DG32">DG32</option>
-                                            <option value="DG29">DG29</option>
-                                            <option value="DH54">DH54</option>
-                                            <option value="DH53">DH53</option>
-                                            <option value="DH52">DH52</option>
-                                            <option value="DH51">DH51</option>
-                                            <option value="DH48">DH48</option>
-                                            <option value="DH47">DH47</option>
-                                            <option value="DH44">DH44</option>
-                                            <option value="DH43">DH43</option>
-                                            <option value="DH42">DH42</option>
-                                            <option value="DH41">DH41</option>
-                                            <option value="DH40">DH40</option>
-                                            <option value="DH39">DH39</option>
-                                            <option value="DH34">DH34</option>
-                                            <option value="DH33">DH33</option>
-                                            <option value="DH32">DH32</option>
-                                            <option value="DH31">DH31</option>
-                                            <option value="DH29">DH29</option>
-                                            <option value="DM54">DM54</option>
-                                            <option value="DM53">DM53</option>
-                                            <option value="DM52">DM52</option>
-                                            <option value="DM51">DM51</option>
-                                            <option value="DM46">DM46</option>
-                                            <option value="DM45">DM45</option>
-                                            <option value="DM41">DM41</option>
-                                            <option value="DM40">DM40</option>
-                                            <option value="DM34">DM34</option>
-                                            <option value="DM32">DM32</option>
-                                            <option value="DM29">DM29</option>
-                                            <option value="DS54">DS54</option>
-                                            <option value="DS53">DS53</option>
-                                            <option value="DS52">DS52</option>
-                                            <option value="DS51">DS51</option>
-                                            <option value="DS45">DS45</option>
-                                            <option value="DU56">DU56</option>
-                                            <option value="DU55">DU55</option>
-                                            <option value="DU54">DU54</option>
-                                            <option value="DU53">DU53</option>
-                                            <option value="DU51">DU51</option>
-                                            <option value="DU51P">DU51P</option>
-                                            <option value="DUF54">DUF54</option>
-                                            <option value="DUF53">DUF53</option>
-                                            <option value="DUF52">DUF52</option>
-                                            <option value="DUF51">DUF51</option>
-                                            <option value="DUF45">DUF45</option>
-                                            <option value="DUG56">DUG56</option>
-                                            <option value="DUG55">DUG55</option>
-                                            <option value="DUG54">DUG54</option>
-                                            <option value="DUG53">DUG53</option>
-                                            <option value="DUG51">DUG51</option>
-                                            <option value="DUG51P">DUG51P</option>
-                                            <option value="DV54">DV54</option>
-                                            <option value="DV53">DV53</option>
-                                            <option value="DV52">DV52</option>
-                                            <option value="DV51">DV51</option>
-                                            <option value="DV48">DV48</option>
-                                            <option value="DV47">DV47</option>
-                                            <option value="DV44">DV44</option>
-                                            <option value="DV43">DV43</option>
-                                            <option value="DV42">DV42</option>
-                                            <option value="DV41">DV41</option>
-                                            <option value="DV40">DV40</option>
-                                            <option value="DV39">DV39</option>
-                                            <option value="DV38">DV38</option>
-                                            <option value="DV37">DV37</option>
-                                            <option value="DV36">DV36</option>
-                                            <option value="DV35">DV35</option>
-                                            <option value="DV30">DV30</option>
-                                            <option value="DV29">DV29</option>
-                                            <option value="DV22">DV22</option>
-                                            <option value="DV21">DV21</option>
-                                            <option value="DV19">DV19</option>
-                                            <option value="E54">E54</option>
-                                            <option value="E52">E52</option>
-                                            <option value="E48">E48</option>
-                                            <option value="E44">E44</option>
-                                            <option value="E42">E42</option>
-                                            <option value="E41">E41</option>
-                                            <option value="E40">E40</option>
-                                            <option value="E38">E38</option>
-                                            <option value="E32">E32</option>
-                                            <option value="E30">E30</option>
-                                            <option value="E29">E29</option>
-                                            <option value="E28">E28</option>
-                                            <option value="E26">E26</option>
-                                            <option value="E22">E22</option>
-                                            <option value="E19">E19</option>
-                                            <option value="E20">E20</option>
-                                            <option value="E11">E11</option>
-                                            <option value="F54">F54</option>
-                                            <option value="F52">F52</option>
-                                            <option value="F48">F48</option>
-                                            <option value="F44">F44</option>
-                                            <option value="F41">F41</option>
-                                            <option value="F22">F22</option>
-                                            <option value="F14">F14</option>
-                                            <option value="F11">F11</option>
-                                            <option value="FA40">FA40</option>
-                                            <option value="FA38">FA38</option>
-                                            <option value="FA32">FA32</option>
-                                            <option value="FA29">FA29</option>
-                                            <option value="FT28">FT28</option>
-                                            <option value="FT26">FT26</option>
-                                            <option value="FT22">FT22</option>
-                                            <option value="FT19">FT19</option>
-                                            <option value="G54">G54</option>
-                                            <option value="G52">G52</option>
-                                            <option value="G48">G48</option>
-                                            <option value="G44">G44</option>
-                                            <option value="G41">G41</option>
-                                            <option value="G40">G40</option>
-                                            <option value="G36">G36</option>
-                                            <option value="G32">G32</option>
-                                            <option value="G30">G30</option>
-                                            <option value="G29">G29</option>
-                                            <option value="G28">G28</option>
-                                            <option value="G26">G26</option>
-                                            <option value="G22">G22</option>
-                                            <option value="G20">G20</option>
-                                            <option value="G19">G19</option>
-                                            <option value="G14">G14</option>
-                                            <option value="G11">G11</option>
-                                            <option value="GV54">GV54</option>
-                                            <option value="GV52">GV52</option>
-                                            <option value="GV48">GV48</option>
-                                            <option value="GV44">GV44</option>
-                                            <option value="GV41">GV41</option>
-                                            <option value="H28">H28</option>
-                                            <option value="H26">H26</option>
-                                            <option value="H22">H22</option>
-                                            <option value="H19">H19</option>
-                                            <option value="H18">H18</option>
-                                            <option value="H16">H16</option>
-                                            <option value="H14">H14</option>
-                                            <option value="H11">H11</option>
-                                            <option value="J54">J54</option>
-                                            <option value="J52">J52</option>
-                                            <option value="J48">J48</option>
-                                            <option value="J44">J44</option>
-                                            <option value="J41">J41</option>
-                                            <option value="J40">J40</option>
-                                            <option value="J38">J38</option>
-                                            <option value="J36">J36</option>
-                                            <option value="J29">J29</option>
-                                            <option value="J28">J28</option>
-                                            <option value="J26">J26</option>
-                                            <option value="J22">J22</option>
-                                            <option value="J19">J19</option>
-                                            <option value="J14">J14</option>
-                                            <option value="J11">J11</option>
-                                            <option value="JA40">JA40</option>
-                                            <option value="JA38">JA38</option>
-                                            <option value="JA36">JA36</option>
-                                            <option value="JA30">JA30</option>
-                                            <option value="JA29">JA29</option>
-                                            <option value="JA26">JA26</option>
-                                            <option value="JA22">JA22</option>
-                                            <option value="JA19">JA19</option>
-                                            <option value="KA54">KA54</option>
-                                            <option value="KA52">KA52</option>
-                                            <option value="KA48">KA48</option>
-                                            <option value="KA44">KA44</option>
-                                            <option value="KA41">KA41</option>
-                                            <option value="KA40">KA40</option>
-                                            <option value="KA38">KA38</option>
-                                            <option value="KA32">KA32</option>
-                                            <option value="KA29">KA29</option>
-                                            <option value="KA28">KA28</option>
-                                            <option value="KA26">KA26</option>
-                                            <option value="KA24">KA24</option>
-                                            <option value="KA22">KA22</option>
-                                            <option value="KA20">KA20</option>
-                                            <option value="KA19">KA19</option>
-                                            <option value="KB54">KB54</option>
-                                            <option value="KB52">KB52</option>
-                                            <option value="KB48">KB48</option>
-                                            <option value="KB44">KB44</option>
-                                            <option value="KB41">KB41</option>
-                                            <option value="KB40">KB40</option>
-                                            <option value="KB38">KB38</option>
-                                            <option value="KB32">KB32</option>
-                                            <option value="KB29">KB29</option>
-                                            <option value="KB28">KB28</option>
-                                            <option value="KB26">KB26</option>
-                                            <option value="KB24">KB24</option>
-                                            <option value="KB22">KB22</option>
-                                            <option value="KB19">KB19</option>
-                                            <option value="KJ22">KJ22</option>
-                                            <option value="KJ18">KJ18</option>
-                                            <option value="KJ16">KJ16</option>
-                                            <option value="KJ14">KJ14</option>
-                                            <option value="KJ13">KJ13</option>
-                                            <option value="KJ10">KJ10</option>
-                                            <option value="KJ8">KJ8</option>
-                                            <option value="KJ6">KJ6</option>
-                                            <option value="KJ4">KJ4</option>
-                                            <option value="KJ2">KJ2</option>
-                                            <option value="KJ1">KJ1</option>
-                                            <option value="KP54">KP54</option>
-                                            <option value="KP52">KP52</option>
-                                            <option value="KP48">KP48</option>
-                                            <option value="KP44">KP44</option>
-                                            <option value="KP42">KP42</option>
-                                            <option value="KP41">KP41</option>
-                                            <option value="KP40">KP40</option>
-                                            <option value="KP38">KP38</option>
-                                            <option value="KP32">KP32</option>
-                                            <option value="KP29">KP29</option>
-                                            <option value="KP28">KP28</option>
-                                            <option value="KP26">KP26</option>
-                                            <option value="KP22">KP22</option>
-                                            <option value="KP19">KP19</option>
-                                            <option value="KP18">KP18</option>
-                                            <option value="KP16">KP16</option>
-                                            <option value="KP14">KP14</option>
-                                            <option value="KP11">KP11</option>
-                                            <option value="KP19 (Khas)">KP19 (Khas)</option>
-                                            <option value="L54">L54</option>
-                                            <option value="L52">L52</option>
-                                            <option value="L48">L48</option>
-                                            <option value="L44">L44</option>
-                                            <option value="L41">L41</option>
-                                            <option value="L40">L40</option>
-                                            <option value="L38">L38</option>
-                                            <option value="L32">L32</option>
-                                            <option value="L29">L29</option>
-                                            <option value="L28">L28</option>
-                                            <option value="L26">L26</option>
-                                            <option value="L22">L22</option>
-                                            <option value="L19">L19</option>
-                                            <option value="LA40">LA40</option>
-                                            <option value="LA38">LA38</option>
-                                            <option value="LA32">LA32</option>
-                                            <option value="LA30">LA30</option>
-                                            <option value="LA29">LA29</option>
-                                            <option value="LA26">LA26</option>
-                                            <option value="LA22">LA22</option>
-                                            <option value="LA19">LA19</option>
-                                            <option value="LS54">LS54</option>
-                                            <option value="LS52">LS52</option>
-                                            <option value="LS48">LS48</option>
-                                            <option value="LS44">LS44</option>
-                                            <option value="LS41">LS41</option>
-                                            <option value="LS40">LS40</option>
-                                            <option value="LS38">LS38</option>
-                                            <option value="LS32">LS32</option>
-                                            <option value="LS29">LS29</option>
-                                            <option value="LS28">LS28</option>
-                                            <option value="LS26">LS26</option>
-                                            <option value="LS22">LS22</option>
-                                            <option value="LS19">LS19</option>
-                                            <option value="M54">M54</option>
-                                            <option value="M52">M52</option>
-                                            <option value="M48">M48</option>
-                                            <option value="M44">M44</option>
-                                            <option value="M41">M41</option>
-                                            <option value="N54">N54</option>
-                                            <option value="N52">N52</option>
-                                            <option value="N48">N48</option>
-                                            <option value="N44">N44</option>
-                                            <option value="N41">N41</option>
-                                            <option value="N40">N40</option>
-                                            <option value="N36">N36</option>
-                                            <option value="N32">N32</option>
-                                            <option value="N30">N30</option>
-                                            <option value="N29">N29</option>
-                                            <option value="N28">N28</option>
-                                            <option value="N26">N26</option>
-                                            <option value="N22">N22</option>
-                                            <option value="N19">N19</option>
-                                            <option value="N18">N18</option>
-                                            <option value="N16">N16</option>
-                                            <option value="N14">N14</option>
-                                            <option value="N11">N11</option>
-                                            <option value="N19 (Khas)">N19 (Khas)</option>
-                                            <option value="NP40">NP40</option>
-                                            <option value="NP36">NP36</option>
-                                            <option value="NP32">NP32</option>
-                                            <option value="NP29">NP29</option>
-                                            <option value="NT40">NT40</option>
-                                            <option value="NT36">NT36</option>
-                                            <option value="NT32">NT32</option>
-                                            <option value="NT30">NT30</option>
-                                            <option value="NT29">NT29</option>
-                                            <option value="NT26">NT26</option>
-                                            <option value="NT22">NT22</option>
-                                            <option value="NT19">NT19</option>
-                                            <option value="NT31 (Khas)">NT31 (Khas)</option>
-                                            <option value="Q54">Q54</option>
-                                            <option value="Q53">Q53</option>
-                                            <option value="Q52">Q52</option>
-                                            <option value="Q51">Q51</option>
-                                            <option value="Q48">Q48</option>
-                                            <option value="Q47">Q47</option>
-                                            <option value="Q44">Q44</option>
-                                            <option value="Q43">Q43</option>
-                                            <option value="Q41">Q41</option>
-                                            <option value="Q40">Q40</option>
-                                            <option value="Q36">Q36</option>
-                                            <option value="Q32">Q32</option>
-                                            <option value="Q29">Q29</option>
-                                            <option value="Q28">Q28</option>
-                                            <option value="Q26">Q26</option>
-                                            <option value="Q22">Q22</option>
-                                            <option value="Q19">Q19</option>
-                                            <option value="R24">R24</option>
-                                            <option value="R22">R22</option>
-                                            <option value="R19">R19</option>
-                                            <option value="R16">R16</option>
-                                            <option value="R14">R14</option>
-                                            <option value="R12">R12</option>
-                                            <option value="R11">R11</option>
-                                            <option value="R9">R9</option>
-                                            <option value="R8">R8</option>
-                                            <option value="R6">R6</option>
-                                            <option value="R4">R4</option>
-                                            <option value="R3">R3</option>
-                                            <option value="R1">R1</option>
-                                            <option value="S54">S54</option>
-                                            <option value="S53">S53</option>
-                                            <option value="S52">S52</option>
-                                            <option value="S51">S51</option>
-                                            <option value="S48">S48</option>
-                                            <option value="S47">S47</option>
-                                            <option value="S44">S44</option>
-                                            <option value="S43">S43</option>
-                                        </select>
+                                        <input type="text" 
+                                               name="grade" 
+                                               id="gradeInput" 
+                                               class="form-control" 
+                                               placeholder="Klik untuk pilih gred..." 
+                                               required 
+                                               readonly>
                                     </div>
                                 </div>
                             </div>
@@ -787,261 +344,481 @@
         </div>
     </div>
 </div>
+
+<!-- Grade Selection Modal -->
+<div class="modal fade" id="gradeModal" tabindex="-1" aria-labelledby="gradeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="gradeModalLabel">Pilih Gred</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="search-container">
+                    <input type="text" 
+                           id="gradeSearch" 
+                           class="form-control" 
+                           placeholder="Cari gred..."
+                           autocomplete="off">
+                </div>
+                <div class="grade-list-container">
+                    <select class="form-select" id="gradeSelect" size="10">
+                        <option value="" disabled selected>Pilih</option>
+                        <option value="VU1">VU1</option>
+                        <option value="VU2">VU2</option>
+                        <option value="VU3">VU3</option>
+                        <option value="VU4">VU4</option>
+                        <option value="VU5">VU5</option>
+                        <option value="VU6">VU6</option>
+                        <option value="VU7">VU7</option>
+                        <option value="VK2">VK2</option>
+                        <option value="VK3">VK3</option>
+                        <option value="VK4">VK4</option>
+                        <option value="VK5">VK5</option>
+                        <option value="VK6">VK6</option>
+                        <option value="VK7">VK7</option>
+                        <option value="A54">A54</option>
+                        <option value="A52">A52</option>
+                        <option value="A48">A48</option>
+                        <option value="A44">A44</option>
+                        <option value="A41">A41</option>
+                        <option value="A40">A40</option>
+                        <option value="A38">A38</option>
+                        <option value="A36">A36</option>
+                        <option value="A29">A29</option>
+                        <option value="A28">A28</option>
+                        <option value="A26">A26</option>
+                        <option value="A22">A22</option>
+                        <option value="A20">A20</option>
+                        <option value="A19">A19</option>
+                        <option value="A13">A13</option>
+                        <option value="A14">A14</option>
+                        <option value="A12">A12</option>
+                        <option value="A11">A11</option>
+                        <option value="A4">A4</option>
+                        <option value="A3">A3</option>
+                        <option value="A1">A1</option>
+                        <option value="AA36">AA36</option>
+                        <option value="AA22">AA22</option>
+                        <option value="AA20">AA20</option>
+                        <option value="AA19">AA19</option>
+                        <option value="AA13">AA13</option>
+                        <option value="AB40">AB40</option>
+                        <option value="AB38">AB38</option>
+                        <option value="AB36">AB36</option>
+                        <option value="AB30">AB30</option>
+                        <option value="AB29">AB29</option>
+                        <option value="AB26">AB26</option>
+                        <option value="AB22">AB22</option>
+                        <option value="AB19">AB19</option>
+                        <option value="AL54">AL54</option>
+                        <option value="AL52">AL52</option>
+                        <option value="AL48">AL48</option>
+                        <option value="AL44">AL44</option>
+                        <option value="AL41">AL41</option>
+                        <option value="AT54">AT54</option>
+                        <option value="AT53">AT53</option>
+                        <option value="AT52">AT52</option>
+                        <option value="AT51">AT51</option>
+                        <option value="AT48">AT48</option>
+                        <option value="AT47">AT47</option>
+                        <option value="AT44">AT44</option>
+                        <option value="AT43">AT43</option>
+                        <option value="AT41">AT41</option>
+                        <option value="B54">B54</option>
+                        <option value="B53">B53</option>
+                        <option value="B52">B52</option>
+                        <option value="B51">B51</option>
+                        <option value="B48">B48</option>
+                        <option value="B47">B47</option>
+                        <option value="B44">B44</option>
+                        <option value="B43">B43</option>
+                        <option value="B42">B42</option>
+                        <option value="B41">B41</option>
+                        <option value="B40">B40</option>
+                        <option value="B39">B39</option>
+                        <option value="B38">B38</option>
+                        <option value="B37">B37</option>
+                        <option value="B32">B32</option>
+                        <option value="B31">B31</option>
+                        <option value="B30">B30</option>
+                        <option value="B29">B29</option>
+                        <option value="B28">B28</option>
+                        <option value="B27">B27</option>
+                        <option value="B26">B26</option>
+                        <option value="B25">B25</option>
+                        <option value="B22">B22</option>
+                        <option value="B21">B21</option>
+                        <option value="B19">B19</option>
+                        <option value="B20">B20</option>
+                        <option value="B14">B14</option>
+                        <option value="B13">B13</option>
+                        <option value="B11">B11</option>
+                        <option value="C54">C54</option>
+                        <option value="C52">C52</option>
+                        <option value="C48">C48</option>
+                        <option value="C44">C44</option>
+                        <option value="C41">C41</option>
+                        <option value="C40">C40</option>
+                        <option value="C38">C38</option>
+                        <option value="C32">C32</option>
+                        <option value="C29">C29</option>
+                        <option value="C28">C28</option>
+                        <option value="C26">C26</option>
+                        <option value="C22">C22</option>
+                        <option value="C19">C19</option>
+                        <option value="C14">C14</option>
+                        <option value="C11">C11</option>
+                        <option value="DG54">DG54</option>
+                        <option value="DG52">DG52</option>
+                        <option value="DG48">DG48</option>
+                        <option value="DG44">DG44</option>
+                        <option value="DG42">DG42</option>
+                        <option value="DG41">DG41</option>
+                        <option value="DG40">DG40</option>
+                        <option value="DG38">DG38</option>
+                        <option value="DG34">DG34</option>
+                        <option value="DG32">DG32</option>
+                        <option value="DG29">DG29</option>
+                        <option value="DH54">DH54</option>
+                        <option value="DH53">DH53</option>
+                        <option value="DH52">DH52</option>
+                        <option value="DH51">DH51</option>
+                        <option value="DH48">DH48</option>
+                        <option value="DH47">DH47</option>
+                        <option value="DH44">DH44</option>
+                        <option value="DH43">DH43</option>
+                        <option value="DH42">DH42</option>
+                        <option value="DH41">DH41</option>
+                        <option value="DH40">DH40</option>
+                        <option value="DH39">DH39</option>
+                        <option value="DH34">DH34</option>
+                        <option value="DH33">DH33</option>
+                        <option value="DH32">DH32</option>
+                        <option value="DH31">DH31</option>
+                        <option value="DH29">DH29</option>
+                        <option value="DM54">DM54</option>
+                        <option value="DM53">DM53</option>
+                        <option value="DM52">DM52</option>
+                        <option value="DM51">DM51</option>
+                        <option value="DM46">DM46</option>
+                        <option value="DM45">DM45</option>
+                        <option value="DM41">DM41</option>
+                        <option value="DM40">DM40</option>
+                        <option value="DM34">DM34</option>
+                        <option value="DM32">DM32</option>
+                        <option value="DM29">DM29</option>
+                        <option value="DS54">DS54</option>
+                        <option value="DS53">DS53</option>
+                        <option value="DS52">DS52</option>
+                        <option value="DS51">DS51</option>
+                        <option value="DS45">DS45</option>
+                        <option value="DU56">DU56</option>
+                        <option value="DU55">DU55</option>
+                        <option value="DU54">DU54</option>
+                        <option value="DU53">DU53</option>
+                        <option value="DU51">DU51</option>
+                        <option value="DU51P">DU51P</option>
+                        <option value="DUF54">DUF54</option>
+                        <option value="DUF53">DUF53</option>
+                        <option value="DUF52">DUF52</option>
+                        <option value="DUF51">DUF51</option>
+                        <option value="DUF45">DUF45</option>
+                        <option value="DUG56">DUG56</option>
+                        <option value="DUG55">DUG55</option>
+                        <option value="DUG54">DUG54</option>
+                        <option value="DUG53">DUG53</option>
+                        <option value="DUG51">DUG51</option>
+                        <option value="DUG51P">DUG51P</option>
+                        <option value="DV54">DV54</option>
+                        <option value="DV53">DV53</option>
+                        <option value="DV52">DV52</option>
+                        <option value="DV51">DV51</option>
+                        <option value="DV48">DV48</option>
+                        <option value="DV47">DV47</option>
+                        <option value="DV44">DV44</option>
+                        <option value="DV43">DV43</option>
+                        <option value="DV42">DV42</option>
+                        <option value="DV41">DV41</option>
+                        <option value="DV40">DV40</option>
+                        <option value="DV39">DV39</option>
+                        <option value="DV38">DV38</option>
+                        <option value="DV37">DV37</option>
+                        <option value="DV36">DV36</option>
+                        <option value="DV35">DV35</option>
+                        <option value="DV30">DV30</option>
+                        <option value="DV29">DV29</option>
+                        <option value="DV22">DV22</option>
+                        <option value="DV21">DV21</option>
+                        <option value="DV19">DV19</option>
+                        <option value="E54">E54</option>
+                        <option value="E52">E52</option>
+                        <option value="E48">E48</option>
+                        <option value="E44">E44</option>
+                        <option value="E42">E42</option>
+                        <option value="E41">E41</option>
+                        <option value="E40">E40</option>
+                        <option value="E38">E38</option>
+                        <option value="E32">E32</option>
+                        <option value="E30">E30</option>
+                        <option value="E29">E29</option>
+                        <option value="E28">E28</option>
+                        <option value="E26">E26</option>
+                        <option value="E22">E22</option>
+                        <option value="E19">E19</option>
+                        <option value="E20">E20</option>
+                        <option value="E11">E11</option>
+                        <option value="F54">F54</option>
+                        <option value="F52">F52</option>
+                        <option value="F48">F48</option>
+                        <option value="F44">F44</option>
+                        <option value="F41">F41</option>
+                        <option value="F22">F22</option>
+                        <option value="F14">F14</option>
+                        <option value="F11">F11</option>
+                        <option value="FA40">FA40</option>
+                        <option value="FA38">FA38</option>
+                        <option value="FA32">FA32</option>
+                        <option value="FA29">FA29</option>
+                        <option value="FT28">FT28</option>
+                        <option value="FT26">FT26</option>
+                        <option value="FT22">FT22</option>
+                        <option value="FT19">FT19</option>
+                        <option value="G54">G54</option>
+                        <option value="G52">G52</option>
+                        <option value="G48">G48</option>
+                        <option value="G44">G44</option>
+                        <option value="G41">G41</option>
+                        <option value="G40">G40</option>
+                        <option value="G36">G36</option>
+                        <option value="G32">G32</option>
+                        <option value="G30">G30</option>
+                        <option value="G29">G29</option>
+                        <option value="G28">G28</option>
+                        <option value="G26">G26</option>
+                        <option value="G22">G22</option>
+                        <option value="G20">G20</option>
+                        <option value="G19">G19</option>
+                        <option value="G14">G14</option>
+                        <option value="G11">G11</option>
+                        <option value="GV54">GV54</option>
+                        <option value="GV52">GV52</option>
+                        <option value="GV48">GV48</option>
+                        <option value="GV44">GV44</option>
+                        <option value="GV41">GV41</option>
+                        <option value="H28">H28</option>
+                        <option value="H26">H26</option>
+                        <option value="H22">H22</option>
+                        <option value="H19">H19</option>
+                        <option value="H18">H18</option>
+                        <option value="H16">H16</option>
+                        <option value="H14">H14</option>
+                        <option value="H11">H11</option>
+                        <option value="J54">J54</option>
+                        <option value="J52">J52</option>
+                        <option value="J48">J48</option>
+                        <option value="J44">J44</option>
+                        <option value="J41">J41</option>
+                        <option value="J40">J40</option>
+                        <option value="J38">J38</option>
+                        <option value="J36">J36</option>
+                        <option value="J29">J29</option>
+                        <option value="J28">J28</option>
+                        <option value="J26">J26</option>
+                        <option value="J22">J22</option>
+                        <option value="J19">J19</option>
+                        <option value="J14">J14</option>
+                        <option value="J11">J11</option>
+                        <option value="JA40">JA40</option>
+                        <option value="JA38">JA38</option>
+                        <option value="JA36">JA36</option>
+                        <option value="JA30">JA30</option>
+                        <option value="JA29">JA29</option>
+                        <option value="JA26">JA26</option>
+                        <option value="JA22">JA22</option>
+                        <option value="JA19">JA19</option>
+                        <option value="KA54">KA54</option>
+                        <option value="KA52">KA52</option>
+                        <option value="KA48">KA48</option>
+                        <option value="KA44">KA44</option>
+                        <option value="KA41">KA41</option>
+                        <option value="KA40">KA40</option>
+                        <option value="KA38">KA38</option>
+                        <option value="KA32">KA32</option>
+                        <option value="KA29">KA29</option>
+                        <option value="KA28">KA28</option>
+                        <option value="KA26">KA26</option>
+                        <option value="KA24">KA24</option>
+                        <option value="KA22">KA22</option>
+                        <option value="KA20">KA20</option>
+                        <option value="KA19">KA19</option>
+                        <option value="KB54">KB54</option>
+                        <option value="KB52">KB52</option>
+                        <option value="KB48">KB48</option>
+                        <option value="KB44">KB44</option>
+                        <option value="KB41">KB41</option>
+                        <option value="KB40">KB40</option>
+                        <option value="KB38">KB38</option>
+                        <option value="KB32">KB32</option>
+                        <option value="KB29">KB29</option>
+                        <option value="KB28">KB28</option>
+                        <option value="KB26">KB26</option>
+                        <option value="KB24">KB24</option>
+                        <option value="KB22">KB22</option>
+                        <option value="KB19">KB19</option>
+                        <option value="KJ22">KJ22</option>
+                        <option value="KJ18">KJ18</option>
+                        <option value="KJ16">KJ16</option>
+                        <option value="KJ14">KJ14</option>
+                        <option value="KJ13">KJ13</option>
+                        <option value="KJ10">KJ10</option>
+                        <option value="KJ8">KJ8</option>
+                        <option value="KJ6">KJ6</option>
+                        <option value="KJ4">KJ4</option>
+                        <option value="KJ2">KJ2</option>
+                        <option value="KJ1">KJ1</option>
+                        <option value="KP54">KP54</option>
+                        <option value="KP52">KP52</option>
+                        <option value="KP48">KP48</option>
+                        <option value="KP44">KP44</option>
+                        <option value="KP42">KP42</option>
+                        <option value="KP41">KP41</option>
+                        <option value="KP40">KP40</option>
+                        <option value="KP38">KP38</option>
+                        <option value="KP32">KP32</option>
+                        <option value="KP29">KP29</option>
+                        <option value="KP28">KP28</option>
+                        <option value="KP26">KP26</option>
+                        <option value="KP22">KP22</option>
+                        <option value="KP19">KP19</option>
+                        <option value="KP18">KP18</option>
+                        <option value="KP16">KP16</option>
+                        <option value="KP14">KP14</option>
+                        <option value="KP11">KP11</option>
+                        <option value="KP19 (Khas)">KP19 (Khas)</option>
+                        <option value="L54">L54</option>
+                        <option value="L52">L52</option>
+                        <option value="L48">L48</option>
+                        <option value="L44">L44</option>
+                        <option value="L41">L41</option>
+                        <option value="L40">L40</option>
+                        <option value="L38">L38</option>
+                        <option value="L32">L32</option>
+                        <option value="L29">L29</option>
+                        <option value="L28">L28</option>
+                        <option value="L26">L26</option>
+                        <option value="L22">L22</option>
+                        <option value="L19">L19</option>
+                        <option value="LA40">LA40</option>
+                        <option value="LA38">LA38</option>
+                        <option value="LA32">LA32</option>
+                        <option value="LA30">LA30</option>
+                        <option value="LA29">LA29</option>
+                        <option value="LA26">LA26</option>
+                        <option value="LA22">LA22</option>
+                        <option value="LA19">LA19</option>
+                        <option value="LS54">LS54</option>
+                        <option value="LS52">LS52</option>
+                        <option value="LS48">LS48</option>
+                        <option value="LS44">LS44</option>
+                        <option value="LS41">LS41</option>
+                        <option value="LS40">LS40</option>
+                        <option value="LS38">LS38</option>
+                        <option value="LS32">LS32</option>
+                        <option value="LS29">LS29</option>
+                        <option value="LS28">LS28</option>
+                        <option value="LS26">LS26</option>
+                        <option value="LS22">LS22</option>
+                        <option value="LS19">LS19</option>
+                        <option value="M54">M54</option>
+                        <option value="M52">M52</option>
+                        <option value="M48">M48</option>
+                        <option value="M44">M44</option>
+                        <option value="M41">M41</option>
+                        <option value="N54">N54</option>
+                        <option value="N52">N52</option>
+                        <option value="N48">N48</option>
+                        <option value="N44">N44</option>
+                        <option value="N41">N41</option>
+                        <option value="N40">N40</option>
+                        <option value="N36">N36</option>
+                        <option value="N32">N32</option>
+                        <option value="N30">N30</option>
+                        <option value="N29">N29</option>
+                        <option value="N28">N28</option>
+                        <option value="N26">N26</option>
+                        <option value="N22">N22</option>
+                        <option value="N19">N19</option>
+                        <option value="N18">N18</option>
+                        <option value="N16">N16</option>
+                        <option value="N14">N14</option>
+                        <option value="N11">N11</option>
+                        <option value="N19 (Khas)">N19 (Khas)</option>
+                        <option value="NP40">NP40</option>
+                        <option value="NP36">NP36</option>
+                        <option value="NP32">NP32</option>
+                        <option value="NP29">NP29</option>
+                        <option value="NT40">NT40</option>
+                        <option value="NT36">NT36</option>
+                        <option value="NT32">NT32</option>
+                        <option value="NT30">NT30</option>
+                        <option value="NT29">NT29</option>
+                        <option value="NT26">NT26</option>
+                        <option value="NT22">NT22</option>
+                        <option value="NT19">NT19</option>
+                        <option value="NT31 (Khas)">NT31 (Khas)</option>
+                        <option value="Q54">Q54</option>
+                        <option value="Q53">Q53</option>
+                        <option value="Q52">Q52</option>
+                        <option value="Q51">Q51</option>
+                        <option value="Q48">Q48</option>
+                        <option value="Q47">Q47</option>
+                        <option value="Q44">Q44</option>
+                        <option value="Q43">Q43</option>
+                        <option value="Q41">Q41</option>
+                        <option value="Q40">Q40</option>
+                        <option value="Q36">Q36</option>
+                        <option value="Q32">Q32</option>
+                        <option value="Q29">Q29</option>
+                        <option value="Q28">Q28</option>
+                        <option value="Q26">Q26</option>
+                        <option value="Q22">Q22</option>
+                        <option value="Q19">Q19</option>
+                        <option value="R24">R24</option>
+                        <option value="R22">R22</option>
+                        <option value="R19">R19</option>
+                        <option value="R16">R16</option>
+                        <option value="R14">R14</option>
+                        <option value="R12">R12</option>
+                        <option value="R11">R11</option>
+                        <option value="R9">R9</option>
+                        <option value="R8">R8</option>
+                        <option value="R6">R6</option>
+                        <option value="R4">R4</option>
+                        <option value="R3">R3</option>
+                        <option value="R1">R1</option>
+                        <option value="S54">S54</option>
+                        <option value="S53">S53</option>
+                        <option value="S52">S52</option>
+                        <option value="S51">S51</option>
+                        <option value="S48">S48</option>
+                        <option value="S47">S47</option>
+                        <option value="S44">S44</option>
+                        <option value="S43">S43</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-success" id="selectGradeBtn">
+                    <i class="bi bi-check2 me-1"></i>Pilih
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="/js/form-wizard.js"></script>
-<script src="/js/grade-selector.js"></script>
+<script src="/js/registration-form.js"></script>
 
-<script>
-function isValidDate(year, month, day) {
-    // Convert 2-digit year to 4-digit year
-    const currentYear = new Date().getFullYear();
-    const century = parseInt(year) > (currentYear - 2000) ? '19' : '20';
-    const fullYear = century + year;
-    
-    // Create date object and verify the date is valid
-    const date = new Date(fullYear, month - 1, day);
-    
-    return date.getFullYear() === parseInt(fullYear) &&
-           date.getMonth() === parseInt(month) - 1 &&
-           date.getDate() === parseInt(day) &&
-           parseInt(month) >= 1 && parseInt(month) <= 12 &&
-           parseInt(day) >= 1 && parseInt(day) <= 31;
-}
-
-function formatIC(input) {
-    // Remove all non-digits
-    let value = input.value.replace(/\D/g, '');
-    
-    // Format with dashes
-    if (value.length > 6) {
-        value = value.substring(0, 6) + '-' + value.substring(6);
-    }
-    if (value.length > 9) {
-        value = value.substring(0, 9) + '-' + value.substring(9);
-    }
-    
-    input.value = value;
-}
-
-function validateIC(icNumber) {
-    // Remove all non-digits
-    const cleanIC = icNumber.replace(/\D/g, '');
-    
-    if (cleanIC.length !== 12) {
-        return false;
-    }
-    
-    // Extract year, month, and day
-    const year = cleanIC.substring(0, 2);
-    const month = cleanIC.substring(2, 4);
-    const day = cleanIC.substring(4, 6);
-    
-    return isValidDate(year, month, day);
-}
-
-function calculateAgeAndBirthday(icNumber) {
-    if (!validateIC(icNumber)) {
-        alert('Nombor K/P tidak sah. Sila masukkan tarikh yang sah.');
-        document.querySelector('input[name="ic_no"]').value = '';
-        document.querySelector('input[name="ic_no"]').focus();
-        return false;
-    }
-    
-    // Extract date components
-    const cleanIC = icNumber.replace(/\D/g, '');
-    let year = cleanIC.substring(0, 2);
-    let month = cleanIC.substring(2, 4);
-    let day = cleanIC.substring(4, 6);
-    
-    // Determine century
-    const currentYear = new Date().getFullYear();
-    const fullYear = parseInt(year) > (currentYear - 2000) ? 1900 + parseInt(year) : 2000 + parseInt(year);
-    
-    // Create birth date
-    const birthDate = new Date(fullYear, parseInt(month) - 1, parseInt(day));
-    
-    // Calculate age
-    const today = new Date();
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const monthDiff = today.getMonth() - birthDate.getMonth();
-    
-    // Adjust age if birthday hasn't occurred this year
-    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-        age--;
-    }
-    
-    // Format birthday for input field (YYYY-MM-DD)
-    const formattedMonth = (birthDate.getMonth() + 1).toString().padStart(2, '0');
-    const formattedDay = birthDate.getDate().toString().padStart(2, '0');
-    const formattedBirthday = `${birthDate.getFullYear()}-${formattedMonth}-${formattedDay}`;
-    
-    // Update the form fields
-    document.getElementById('birthday').value = formattedBirthday;
-    document.getElementById('age').value = age;
-}
-
-// Add form submission validation
-document.getElementById('membershipForm').addEventListener('submit', function(e) {
-    const birthdayInput = document.getElementById('birthday');
-    if (!birthdayInput.value) {
-        e.preventDefault();
-        alert('Sila masukkan No. K/P yang sah untuk mengisi tarikh lahir secara automatik.');
-    }
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    const nameInput = document.querySelector('input[name="name"]');
-    if (nameInput) {
-        nameInput.addEventListener('input', function() {
-            this.value = this.value.toUpperCase();
-        });
-    }
-});
-
-const statePostcodes = {
-    'JOHOR': ['01', '02', '79', '80', '81', '82', '83', '84', '85', '86'],
-    'KEDAH': ['05', '06', '07', '08', '09'],
-    'KELANTAN': ['15', '16', '17', '18'],
-    'MELAKA': ['75', '76', '77', '78'],
-    'NEGERI SEMBILAN': ['70', '71', '72', '73', '74'],
-    'PAHANG': ['25', '26', '27', '28', '39'],
-    'PERAK': ['30', '31', '32', '33', '34', '35', '36'],
-    'PERLIS': ['01', '02'],
-    'PULAU PINANG': ['10', '11', '12', '13', '14'],
-    'SABAH': ['88', '89', '90', '91'],
-    'SARAWAK': ['93', '94', '95', '96', '97', '98'],
-    'SELANGOR': ['40', '41', '42', '43', '44', '45', '46', '47', '48', '49'],
-    'TERENGGANU': ['20', '21', '22', '23', '24'],
-    'KUALA LUMPUR': ['50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60'],
-    'LABUAN': ['87'],
-    'PUTRAJAYA': ['62']
-};
-
-function detectPostcodeAndState(type, address) {
-    // Clear existing values
-    document.getElementById(`${type}_postcode`).value = '';
-    document.getElementById(`${type}_state`).value = '';
-
-    if (!address) return;
-
-    // Convert to uppercase for consistency
-    address = address.toUpperCase();
-
-    // Try to find postcode (5 digits)
-    const postcodeMatch = address.match(/\b\d{5}\b/);
-    if (postcodeMatch) {
-        const postcode = postcodeMatch[0];
-        document.getElementById(`${type}_postcode`).value = postcode;
-
-        // Find state based on postcode
-        const prefix = postcode.substring(0, 2);
-        for (const [state, prefixes] of Object.entries(statePostcodes)) {
-            if (prefixes.includes(prefix)) {
-                document.getElementById(`${type}_state`).value = state;
-                break;
-            }
-        }
-    }
-
-    // If no postcode found, try to find state by name
-    if (!document.getElementById(`${type}_state`).value) {
-        for (const state of Object.keys(statePostcodes)) {
-            if (address.includes(state)) {
-                document.getElementById(`${type}_state`).value = state;
-                break;
-            }
-        }
-    }
-}
-
-// Add debounce function to prevent too many calls
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-const detectAddressDebounced = debounce((type, value) => detectPostcodeAndState(type, value), 500);
-
-// Initialize event listeners
-document.addEventListener('DOMContentLoaded', function() {
-    // Add manual postcode validation for both home and office
-    ['home', 'office'].forEach(type => {
-        const postcodeInput = document.getElementById(`${type}_postcode`);
-        if (postcodeInput) {
-            postcodeInput.addEventListener('input', function() {
-                this.value = this.value.replace(/\D/g, '').substring(0, 5);
-                
-                if (this.value.length === 5) {
-                    const prefix = this.value.substring(0, 2);
-                    let stateFound = false;
-                    
-                    for (const [state, prefixes] of Object.entries(statePostcodes)) {
-                        if (prefixes.includes(prefix)) {
-                            document.getElementById(`${type}_state`).value = state;
-                            stateFound = true;
-                            break;
-                        }
-                    }
-                    
-                    if (!stateFound) {
-                        this.setCustomValidity('Poskod tidak sah');
-                    } else {
-                        this.setCustomValidity('');
-                    }
-                }
-            });
-        }
-    });
-
-    const nameInput = document.querySelector('input[name="name"]');
-    if (nameInput) {
-        nameInput.addEventListener('input', function() {
-            this.value = this.value.toUpperCase();
-        });
-    }
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    const backHomeBtn = document.querySelector('.back-home');
-    const prevBtn = document.querySelector('.prev-step');
-    
-    // Function to update button visibility
-    function updateButtonVisibility(currentStep) {
-        if (currentStep === 1) {
-            backHomeBtn.style.display = 'inline-block';
-            prevBtn.style.display = 'none';
-        } else {
-            backHomeBtn.style.display = 'none';
-            prevBtn.style.display = 'inline-block';
-        }
-    }
-    
-    // Initial state - show back home button on step 1
-    updateButtonVisibility(1);
-    
-    // Create a MutationObserver to watch for changes in the active step
-    const observer = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
-            if (mutation.target.classList.contains('active')) {
-                const currentStep = parseInt(mutation.target.getAttribute('data-step'));
-                updateButtonVisibility(currentStep);
-            }
-        });
-    });
-
-    // Observe all step elements for class changes
-    document.querySelectorAll('.step').forEach(function(step) {
-        observer.observe(step, {
-            attributes: true,
-            attributeFilter: ['class']
-        });
-    });
-});
-</script>
 <?php require_once '../app/views/layouts/footer.php'; ?>

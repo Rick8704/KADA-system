@@ -610,4 +610,37 @@ class Director extends BaseModel
             throw new \Exception('Failed to fetch financial trends: ' . $e->getMessage());
         }
     }
+
+    public function getTotalSavings() {
+        try {
+            $sql = "SELECT COALESCE(SUM(amount), 0) as total FROM savings_transactions";
+            $stmt = $this->getConnection()->query($sql);
+            $result = $stmt->fetch(PDO::FETCH_OBJ);
+            return $result->total ?? 0;
+        } catch (\PDOException $e) {
+            error_log('Error in getTotalSavings: ' . $e->getMessage());
+            return 0;
+        }
+    }
+
+    public function getTotalSavingsByMonth($month, $year) {
+        try {
+            $sql = "SELECT COALESCE(SUM(amount), 0) as total 
+                    FROM savings_transactions 
+                    WHERE MONTH(created_at) = :month 
+                    AND YEAR(created_at) = :year";
+            
+            $stmt = $this->getConnection()->prepare($sql);
+            $stmt->execute([
+                ':month' => $month,
+                ':year' => $year
+            ]);
+            
+            $result = $stmt->fetch(PDO::FETCH_OBJ);
+            return $result->total ?? 0;
+        } catch (\PDOException $e) {
+            error_log('Error in getTotalSavingsByMonth: ' . $e->getMessage());
+            return 0;
+        }
+    }
 } 

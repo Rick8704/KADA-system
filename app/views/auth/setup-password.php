@@ -18,6 +18,7 @@
                     <?php endif; ?>
 
                     <form action="/auth/setup-password" method="POST">
+                        <input type="hidden" name="first_login" value="1">
                         <div class="mb-3">
                             <label class="form-label">No. Kad Pengenalan</label>
                             <input type="text" 

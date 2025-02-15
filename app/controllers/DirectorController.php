@@ -27,6 +27,21 @@ class DirectorController extends BaseController
             $membershipStats = $this->director->getMembershipStats();
             $financialTrends = $this->director->getFinancialTrends();
 
+            // Calculate monthly savings trend
+            $currentMonth = date('m');
+            $currentYear = date('Y');
+            $lastMonth = $currentMonth - 1;
+            $lastMonthYear = $currentYear;
+            
+            if ($lastMonth == 0) {
+                $lastMonth = 12;
+                $lastMonthYear = $currentYear - 1;
+            }
+
+            // Get savings data
+            $metrics['total_savings'] = $this->director->getTotalSavings();
+            $metrics['last_month_savings'] = $this->director->getTotalSavingsByMonth($lastMonth, $lastMonthYear);
+
             $metrics = array_merge($metrics, $financialMetrics);
 
             $this->view('director/dashboard', [
