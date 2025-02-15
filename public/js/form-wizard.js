@@ -42,8 +42,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 isEmpty = !field.value || field.value <= 0 || isNaN(parseFloat(field.value));
             } else if (field.type === 'tel') {
                 isEmpty = !field.value.trim() || !/^[\d\s-+()]*$/.test(field.value);
-            } else if (field.type === 'text' && field.name === 'ic_no') {
-                isEmpty = !field.value.trim() || !/^\d{6}-\d{2}-\d{4}$/.test(field.value);
+            } else if (field.name === 'ic_no' || field.name === 'family_ic[]') {
+                // Improved IC validation
+                const cleanIC = field.value.replace(/\D/g, '');
+                isEmpty = !field.value.trim() || cleanIC.length !== 12 || !/^\d{6}-\d{2}-\d{4}$/.test(field.value);
             } else {
                 isEmpty = !field.value.trim();
             }
@@ -63,65 +65,34 @@ document.addEventListener('DOMContentLoaded', function() {
                     errorDiv.textContent = 'Sila masukkan nombor yang sah';
                 } else if (field.type === 'tel') {
                     errorDiv.textContent = 'Sila masukkan nombor telefon yang sah';
-                } else if (field.type === 'text' && field.name === 'ic_no') {
+                } else if (field.name === 'ic_no' || field.name === 'family_ic[]') {
                     errorDiv.textContent = 'Sila masukkan nombor IC yang sah (format: XXXXXX-XX-XXXX)';
                 } else {
                     errorDiv.textContent = 'Ruangan ini perlu diisi';
                 }
                 
-                // Insert error message
                 field.insertAdjacentElement('afterend', errorDiv);
 
-                // Store first invalid field
                 if (!firstInvalid) {
                     firstInvalid = field;
                 }
             }
         });
 
-        // Additional validation for family members if we're on step 4
-        if (currentStep === 4) {
-            const familyMembers = currentContent.querySelectorAll('.family-member');
-            familyMembers.forEach(member => {
-                const fields = member.querySelectorAll('[required]');
-                fields.forEach(field => {
-                    let isEmpty = false;
-                    
-                    if (field.tagName === 'SELECT') {
-                        const selectedOption = field.options[field.selectedIndex];
-                        isEmpty = !field.value || field.value === "" || (selectedOption && selectedOption.disabled);
-                    } else if (field.name === 'family_ic[]') {
-                        isEmpty = !field.value.trim() || !/^\d{6}-\d{2}-\d{4}$/.test(field.value);
-                    } else {
-                        isEmpty = !field.value.trim();
+        // Clear validation state when field is changed
+        requiredFields.forEach(field => {
+            field.addEventListener('input', function() {
+                if (this.classList.contains('is-invalid')) {
+                    this.classList.remove('is-invalid');
+                    const errorMessage = this.nextElementSibling;
+                    if (errorMessage?.classList.contains('invalid-feedback')) {
+                        errorMessage.remove();
                     }
-
-                    if (isEmpty) {
-                        isValid = false;
-                        field.classList.add('is-invalid');
-                        
-                        const errorDiv = document.createElement('div');
-                        errorDiv.className = 'invalid-feedback';
-                        
-                        if (field.tagName === 'SELECT') {
-                            errorDiv.textContent = 'Sila pilih satu pilihan';
-                        } else if (field.name === 'family_ic[]') {
-                            errorDiv.textContent = 'Sila masukkan nombor IC yang sah (format: XXXXXX-XX-XXXX)';
-                        } else {
-                            errorDiv.textContent = 'Ruangan ini perlu diisi';
-                        }
-                        
-                        field.insertAdjacentElement('afterend', errorDiv);
-
-                        if (!firstInvalid) {
-                            firstInvalid = field;
-                        }
-                    }
-                });
+                }
             });
-        }
+        });
 
-        // Scroll to and focus on first invalid field
+        // Scroll to first invalid field
         if (firstInvalid) {
             setTimeout(() => {
                 firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });

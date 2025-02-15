@@ -120,4 +120,27 @@ class AuthUser extends BaseModel
             throw new \Exception('Failed to set password: ' . $e->getMessage());
         }
     }
+
+    public function setupPassword($userId, $password) {
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        
+        $sql = "UPDATE users SET password = ?, status = 'active' WHERE id = ?";
+        $stmt = $this->db->prepare($sql);
+        
+        if ($stmt->execute([$hashedPassword, $userId])) {
+            // After successful password setup, get user details for session
+            $sql = "SELECT * FROM users WHERE id = ?";
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute([$userId]);
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            
+            // Set session variables
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['role'] = $user['role'];
+            
+            return true;
+        }
+        return false;
+    }
 }

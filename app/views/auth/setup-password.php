@@ -17,7 +17,7 @@
                         </div>
                     <?php endif; ?>
 
-                    <form action="/auth/setup-password" method="POST">
+                    <form id="setupPasswordForm" action="/auth/setup-password" method="POST">
                         <input type="hidden" name="first_login" value="1">
                         <div class="mb-3">
                             <label class="form-label">No. Kad Pengenalan</label>
@@ -80,6 +80,52 @@ function formatIC(input) {
     // Update input value
     input.value = value;
 }
+
+document.getElementById('setupPasswordForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    if (this.checkValidity()) {
+        const formData = new FormData(this);
+        
+        fetch('/auth/setup-password', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Show success message briefly before redirecting
+                const alert = document.createElement('div');
+                alert.className = 'alert alert-success';
+                alert.innerHTML = '<i class="bi bi-check-circle me-2"></i>Kata laluan berjaya ditetapkan. Mengarahkan semula...';
+                this.insertAdjacentElement('beforebegin', alert);
+                
+                // Redirect after a short delay
+                setTimeout(() => {
+                    window.location.href = '/users/fees/initial';
+                }, 1500);
+            } else {
+                // Show error message
+                const alert = document.createElement('div');
+                alert.className = 'alert alert-danger';
+                alert.innerHTML = `<i class="bi bi-exclamation-circle me-2"></i>${data.message || 'Ralat menetapkan kata laluan'}`;
+                this.insertAdjacentElement('beforebegin', alert);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            const alert = document.createElement('div');
+            alert.className = 'alert alert-danger';
+            alert.innerHTML = '<i class="bi bi-exclamation-circle me-2"></i>Ralat menetapkan kata laluan';
+            this.insertAdjacentElement('beforebegin', alert);
+        });
+    } else {
+        this.classList.add('was-validated');
+    }
+});
 </script>
 
 <?php require_once '../app/views/layouts/footer.php'; ?> 

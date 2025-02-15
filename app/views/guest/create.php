@@ -196,11 +196,11 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label fw-bold">No. Telefon Bimbit</label>
-                                    <input type="tel" name="mobile_phone" class="form-control" required>
+                                    <input type="tel" name="mobile_phone" oninput="this.value = this.value.replace(/[^0-9]/g, '')" class="form-control" required>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label fw-bold">No. Telefon Rumah</label>
-                                    <input type="tel" name="home_phone" class="form-control" required>
+                                    <input type="tel" name="home_phone" oninput="this.value = this.value.replace(/[^0-9]/g, '')" class="form-control" required>
                                 </div>
                                 <h4 class="mt-4 mb-3 text-success"><i class="bi bi-building me-2"></i>Alamat</h4>
                                 <div class="col-12">
@@ -283,22 +283,61 @@
                                                 <input type="text" name="family_name[]" class="form-control" required>
                                             </div>
                                             <div class="col-md-4">
-                                            <label class="form-label fw-bold">No. K/P atau No. Surat Beranak</label>
-                                            <input type="text" name="family_ic[]" class="form-control" maxlength="14" oninput="formatIC(this)" placeholder="e.g., 880101-01-1234" required>
-                                                <script>
-                                                    function formatIC(input) {
-                                                        let value = input.value.replace(/\D/g, '');
-                                                        value = value.substring(0, 14);
-                                                        if (value.length >= 6) {
-                                                            value = value.substring(0, 6) + '-' + value.substring(6);
-                                                        }
-                                                        if (value.length > 9) {
-                                                            value = value.substring(0,9) + '-' + value.substring(9);
-                                                        }
-                                                        input.value = value;
-                                                    }
-                                                </script>                  
+                                                <label class="form-label fw-bold">No. K/P atau No. Surat Beranak</label>
+                                                <input type="text" 
+                                                       name="family_ic[]" 
+                                                       class="form-control" 
+                                                       maxlength="14" 
+                                                       required
+                                                       oninput="formatFamilyIC(this)" 
+                                                       placeholder="e.g., 880101-01-1234">
                                             </div>
+
+                                            <script>
+                                                function formatFamilyIC(input) {
+                                                    let value = input.value.replace(/\D/g, '');
+                                                    
+                                                    if (value.length > 6) {
+                                                        value = value.substring(0, 6) + '-' + value.substring(6);
+                                                    }
+                                                    if (value.length > 9) {
+                                                        value = value.substring(0, 9) + '-' + value.substring(9);
+                                                    }
+                                                    
+                                                    input.value = value;
+
+                                                    if (!validateIC(icNumber)) {
+                                                        alert('Nombor K/P tidak sah. Sila masukkan tarikh yang sah.');
+                                                        document.querySelector('input[name="ic_no"]').value = '';
+                                                        document.querySelector('input[name="ic_no"]').focus();
+                                                        return false;
+                                                    }
+                                                    
+                                                    // Clear invalid state when user starts typing again
+                                                    input.classList.remove('is-invalid');
+                                                    const errorMessage = input.nextElementSibling;
+                                                    if (errorMessage?.classList.contains('invalid-feedback')) {
+                                                        errorMessage.remove();
+                                                    }
+                                                }
+
+                                                function validateIC(icNumber) {
+                                                    // Remove all non-digits
+                                                    const cleanIC = icNumber.replace(/\D/g, '');
+                                                    
+                                                    if (cleanIC.length !== 12) {
+                                                        return false;
+                                                    }
+                                                    
+                                                    // Extract year, month, and day
+                                                    const year = cleanIC.substring(0, 2);
+                                                    const month = cleanIC.substring(2, 4);
+                                                    const day = cleanIC.substring(4, 6);
+                                                    
+                                                    return isValidDate(year, month, day);
+                                                }
+                                            </script>
+                                            
                                             <div class="col-md-1 d-flex align-items-end">
                                                 <button type="button" class="btn btn-danger remove-family mb-3" style="display: none;">
                                                     <i class="bi bi-trash"></i>

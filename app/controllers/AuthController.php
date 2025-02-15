@@ -151,42 +151,83 @@ class AuthController extends BaseController
 
     public function setupPassword()
     {
-        try {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $ic = $_POST['ic'] ?? '';
             $password = $_POST['password'] ?? '';
             $confirmPassword = $_POST['confirm_password'] ?? '';
-
+            
+            // Validate inputs
             if (empty($ic) || empty($password) || empty($confirmPassword)) {
-                throw new \Exception('Sila isi semua maklumat yang diperlukan');
+                if ($this->isAjaxRequest()) {
+                    $this->jsonResponse(['success' => false, 'message' => 'Sila isi semua maklumat yang diperlukan']);
+                    return;
+                }
+                $_SESSION['error'] = 'Sila isi semua maklumat yang diperlukan';
+                $this->redirect('/auth/setup-password');
+                return;
             }
-
+            
             if ($password !== $confirmPassword) {
-                throw new \Exception('Kata laluan tidak sepadan');
+                if ($this->isAjaxRequest()) {
+                    $this->jsonResponse(['success' => false, 'message' => 'Kata laluan tidak sepadan']);
+                    return;
+                }
+                $_SESSION['error'] = 'Kata laluan tidak sepadan';
+                $this->redirect('/auth/setup-password');
+                return;
             }
-
-            if (strlen($password) < 8) {
-                throw new \Exception('Kata laluan mestilah sekurang-kurangnya 8 aksara');
-            }
-
+            
             // Find member by IC
             $member = $this->authUser->findMemberByIC($ic);
             if (!$member) {
-                throw new \Exception('No. K/P tidak dijumpai. Sila pastikan anda telah diluluskan sebagai ahli.');
+                if ($this->isAjaxRequest()) {
+                    $this->jsonResponse(['success' => false, 'message' => 'No. K/P tidak dijumpai']);
+                    return;
+                }
+                $_SESSION['error'] = 'No. K/P tidak dijumpai';
+                $this->redirect('/auth/setup-password');
+                return;
             }
-
-            // Update password
-            if ($this->authUser->setMemberPassword($member['id'], $password)) {
-                $_SESSION['success'] = 'Kata laluan berjaya ditetapkan. Sila log masuk.';
-                header('Location: /auth/login');
-                exit;
+            
+            // Set the password
+            try {
+                $this->authUser->setMemberPassword($member['id'], $password);
+                
+                // Set proper session variables for member login
+                $_SESSION['member_id'] = $member['id'];
+                $_SESSION['member_name'] = $member['name'];
+                $_SESSION['user_type'] = 'member';
+                
+                if ($this->isAjaxRequest()) {
+                    $this->jsonResponse(['success' => true]);
+                    return;
+                }
+                $this->redirect('/users/fees/initial');
+                
+            } catch (\Exception $e) {
+                if ($this->isAjaxRequest()) {
+                    $this->jsonResponse(['success' => false, 'message' => 'Ralat menetapkan kata laluan']);
+                    return;
+                }
+                $_SESSION['error'] = 'Ralat menetapkan kata laluan';
+                $this->redirect('/auth/setup-password');
             }
-
-            throw new \Exception('Gagal menetapkan kata laluan');
-
-        } catch (\Exception $e) {
-            $_SESSION['error'] = $e->getMessage();
-            header('Location: /auth/setup-password');
-            exit;
         }
+        
+        // Show the setup password form
+        $this->view('auth/setup-password');
+    }
+
+    protected function isAjaxRequest()
+    {
+        return !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && 
+               strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
+    }
+
+    protected function jsonResponse($data)
+    {
+        header('Content-Type: application/json');
+        echo json_encode($data);
+        exit;
     }
 }

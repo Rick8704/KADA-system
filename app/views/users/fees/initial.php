@@ -51,32 +51,129 @@
                     <!-- Fees Breakdown -->
                     <div class="fees-list">
                         <div class="fee-item">
-                            <span>Fee Masuk</span>
-                            <span class="amount">RM 35.00</span>
+                            <div class="fee-label">
+                                <span class="fee-name">Fee Masuk</span>
+                                <small class="text-muted d-block">Yuran kemasukan ahli baru</small>
+                            </div>
+                            <div class="fee-amount">
+                                <div class="input-group">
+                                    <span class="input-group-text border-0 bg-light">RM</span>
+                                    <input type="number" 
+                                           class="form-control form-control-lg border-0 text-end fee-input" 
+                                           name="entrance_fee" 
+                                           value="50.00" 
+                                           step="0.01" 
+                                           min="0" 
+                                           readonly>
+                                </div>
+                            </div>
                         </div>
+
                         <div class="fee-item">
-                            <span>Modal Saham</span>
-                            <span class="amount">RM 300.00</span>
+                            <div class="fee-label">
+                                <span class="fee-name">Modal Saham</span>
+                                <small class="text-muted d-block">Saham minimum keahlian</small>
+                            </div>
+                            <div class="fee-amount">
+                                <div class="input-group">
+                                    <span class="input-group-text border-0 bg-light">RM</span>
+                                    <input type="number" 
+                                           class="form-control form-control-lg border-0 text-end fee-input" 
+                                           name="share_capital"
+                                           value="25.00" 
+                                           step="0.01" 
+                                           min="0">
+                                </div>
+                            </div>
                         </div>
+
                         <div class="fee-item">
-                            <span>Modal Yuran</span>
-                            <span class="amount">RM 35.00</span>
+                            <div class="fee-label">
+                                <span class="fee-name">Modal Yuran</span>
+                                <small class="text-muted d-block">Yuran keahlian</small>
+                            </div>
+                            <div class="fee-amount">
+                                <div class="input-group">
+                                    <span class="input-group-text border-0 bg-light">RM</span>
+                                    <input type="number" 
+                                           class="form-control form-control-lg border-0 text-end fee-input" 
+                                           name="fee_capital" 
+                                           value="35.00" 
+                                           step="0.01" 
+                                           min="0">
+                                </div>
+                            </div>
                         </div>
+
                         <div class="fee-item">
-                            <span>Simpanan Tetap</span>
-                            <span class="amount">RM 5.00</span>
+                            <div class="fee-label">
+                                <span class="fee-name">Simpanan Tetap</span>
+                                <small class="text-muted d-block">Simpanan tetap</small>
+                            </div>
+                            <div class="fee-amount">
+                                <div class="input-group">
+                                    <span class="input-group-text border-0 bg-light">RM</span>
+                                    <input type="number" 
+                                           class="form-control form-control-lg border-0 text-end fee-input" 
+                                           name="fixed_savings" 
+                                           value="25.00" 
+                                           step="0.01" 
+                                           min="0">
+                                </div>
+                            </div>
                         </div>
+
                         <div class="fee-item">
-                            <span>Modal Deposit</span>
-                            <span class="amount">RM 20.00</span>
+                            <div class="fee-label">
+                                <span class="fee-name">Modal Deposit</span>
+                                <small class="text-muted d-block">Modal deposit</small>
+                            </div>
+                            <div class="fee-amount">
+                                <div class="input-group">
+                                    <span class="input-group-text border-0 bg-light">RM</span>
+                                    <input type="number" 
+                                           class="form-control form-control-lg border-0 text-end fee-input" 
+                                           name="deposit_capital" 
+                                           value="25.00" 
+                                           step="0.01" 
+                                           min="0">
+                                </div>
+                            </div>
                         </div>
+
                         <div class="fee-item">
-                            <span>Tabung Kebajikan</span>
-                            <span class="amount">RM 5.00</span>
+                            <div class="fee-label">
+                                <span class="fee-name">Tabung Kebajikan</span>
+                                <small class="text-muted d-block">Tabung kebajikan</small>
+                            </div>
+                            <div class="fee-amount">
+                                <div class="input-group">
+                                    <span class="input-group-text border-0 bg-light">RM</span>
+                                    <input type="number" 
+                                           class="form-control form-control-lg border-0 text-end fee-input" 
+                                           name="welfare_fund" 
+                                           value="25.00" 
+                                           step="0.01" 
+                                           min="0">
+                                </div>
+                            </div>
                         </div>
+
                         <div class="fee-item total">
-                            <span>Jumlah</span>
-                            <span class="amount">RM 400.00</span>
+                            <div class="fee-label">
+                                <span class="fee-name">Jumlah Keseluruhan</span>
+                                <small class="text-muted d-block">Akan ditolak melalui gaji</small>
+                            </div>
+                            <div class="fee-amount">
+                                <div class="input-group">
+                                    <span class="input-group-text border-0 bg-primary text-white">RM</span>
+                                    <input type="number" 
+                                           class="form-control form-control-lg border-0 text-end fw-bold" 
+                                           id="total_amount" 
+                                           value="400.00" 
+                                           readonly>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -247,5 +344,24 @@
     border-radius: 8px;
 }
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const feeInputs = document.querySelectorAll('.fee-input');
+    const totalInput = document.getElementById('total_amount');
+
+    function calculateTotal() {
+        let total = 0;
+        feeInputs.forEach(input => {
+            total += parseFloat(input.value) || 0;
+        });
+        totalInput.value = total.toFixed(2);
+    }
+
+    feeInputs.forEach(input => {
+        input.addEventListener('input', calculateTotal);
+    });
+});
+</script>
 
 <?php require_once '../app/views/layouts/footer.php'; ?> 
