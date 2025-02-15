@@ -27,7 +27,7 @@
                                 <i class="bi bi-calendar-event me-2"></i>Penubuhan
                             </h5>
                             <p class="lead ms-4 mb-0" style="line-height: 1.6;">
-                                Koperasi Kakitangan KADA Kelantan Berhad telah ditubuhkan pada tahun [tahun penubuhan] di bawah Akta Koperasi 1993.
+                                Koperasi Kakitangan KADA Kelantan Berhad telah ditubuhkan di bawah Akta Koperasi 1993.
                             </p>
                         </div>
 

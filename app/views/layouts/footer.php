@@ -4,21 +4,21 @@
             <div class="col-lg-3 col-md-6">
                 <h5 class="footer-heading">Pautan Pantas</h5>
                 <ul class="footer-links">
-                    <li><a href="#"><i class="bi bi-chevron-right"></i> Tentang Kami</a></li>
-                    <li><a href="#"><i class="bi bi-chevron-right"></i> Perkhidmatan</a></li>
-                    <li><a href="#"><i class="bi bi-chevron-right"></i> Keahlian</a></li>
-                    <li><a href="#"><i class="bi bi-chevron-right"></i> Hubungi Kami</a></li>
-                    <li><a href="#"><i class="bi bi-chevron-right"></i> FAQ</a></li>
+                    <li><a href="/about/history"><i class="bi bi-chevron-right"></i> Tentang Kami</a></li>
+                    <li><a href="/info/loantype"><i class="bi bi-chevron-right"></i> Perkhidmatan</a></li>
+                    <li><a href="/guest/create"><i class="bi bi-chevron-right"></i> Keahlian</a></li>
+                    <li><a href="https://github.com/lauyankai/KADA-system"><i class="bi bi-chevron-right"></i> Hubungi Kami</a></li>
+                    <li><a href="https://github.com/lauyankai/KADA-system"><i class="bi bi-chevron-right"></i> FAQ</a></li>
                 </ul>
             </div>
 
             <div class="col-lg-3 col-md-6">
                 <h5 class="footer-heading">Perkhidmatan</h5>
                 <ul class="footer-links">
-                    <li><a href="#"><i class="bi bi-chevron-right"></i> Pinjaman</a></li>
-                    <li><a href="#"><i class="bi bi-chevron-right"></i> Pelaburan</a></li>
-                    <li><a href="#"><i class="bi bi-chevron-right"></i> Tabung</a></li>
-                    <li><a href="#"><i class="bi bi-chevron-right"></i> Pembiayaan</a></li>
+                    <li><a href="/users"><i class="bi bi-chevron-right"></i> Pinjaman</a></li>
+                    <li><a href="/users"><i class="bi bi-chevron-right"></i> Pembiayaan</a></li>
+                    <li><a href="/users"><i class="bi bi-chevron-right"></i> Simpanan</a></li>
+                    <li><a href="/users"><i class="bi bi-chevron-right"></i> Penyata</a></li>
                 </ul>
             </div>
 
@@ -54,17 +54,17 @@
             <div class="col-md-6">
                 <div class="d-flex flex-wrap justify-content-md-end align-items-center gap-3">
                     <div class="social-links">
-                        <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
-                        <a href="#" class="social-link"><i class="bi bi-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="bi bi-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+                        <a href="https://github.com/lauyankai/KADA-system" class="social-link"><i class="bi bi-facebook"></i></a>
+                        <a href="https://github.com/lauyankai/KADA-system" class="social-link"><i class="bi bi-twitter"></i></a>
+                        <a href="https://github.com/lauyankai/KADA-system" class="social-link"><i class="bi bi-instagram"></i></a>
+                        <a href="https://github.com/lauyankai/KADA-system" class="social-link"><i class="bi bi-linkedin"></i></a>
                     </div>
                     <div class="legal-links">
-                        <a href="#">Dasar Privasi</a>
+                        <a href="https://github.com/lauyankai/KADA-system">Dasar Privasi</a>
                         <span class="separator">•</span>
-                        <a href="#">Terma</a>
+                        <a href="https://github.com/lauyankai/KADA-system">Terma</a>
                         <span class="separator">•</span>
-                        <a href="#">Penafian</a>
+                        <a href="https://github.com/lauyankai/KADA-system">Penafian</a>
                     </div>
                 </div>
             </div>

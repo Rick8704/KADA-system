@@ -759,23 +759,27 @@
                         <!-- Navigation Buttons -->
                         <div class="step-buttons mt-4 d-flex justify-content-between align-items-center">
                             <div>
-                              <!-- "Sebelumnya" button will be on the left and hidden initially -->
-                             <button type="button" class="btn btn-secondary prev-step" style="display: none; min-width: 140px;" id="prev-button">
-                             <i class="bi bi-arrow-left me-2"></i>Sebelumnya
-                             </button>
-                           </div>
-    
-                                 <div>
-                                     <!-- "Seterusnya" button will be on the right -->
-                                      <button type="button" class="btn btn-gradient next-step" style="min-width: 140px;" id="next-button">
-                                       Seterusnya<i class="bi bi-arrow-right ms-2"></i>
-                                      </button>
-        
-                                      <!-- "Hantar" button is shown on the last page -->
-                                <button type="submit" class="btn btn-gradient submit-form" style="display: none; min-width: 140px;" id="submit-button">
-                                 Hantar<i class="bi bi-check-circle ms-2"></i>
+                                <!-- Back to Home button - only visible in Step 1 -->
+                                <a href="/" class="btn btn-outline-secondary back-home" style="min-width: 140px; display: none;">
+                                    <i class="bi bi-house-door me-2"></i>Halaman Utama
+                                </a>
+                                <!-- Previous button -->
+                                <button type="button" class="btn btn-secondary prev-step" style="display: none; min-width: 140px;" id="prev-button">
+                                    <i class="bi bi-arrow-left me-2"></i>Sebelumnya
                                 </button>
-                                 </div>
+                            </div>
+    
+                            <div>
+                                <!-- Next button -->
+                                <button type="button" class="btn btn-gradient next-step" style="min-width: 140px;" id="next-button">
+                                    Seterusnya<i class="bi bi-arrow-right ms-2"></i>
+                                </button>
+    
+                                <!-- Submit button -->
+                                <button type="submit" class="btn btn-gradient submit-form" style="display: none; min-width: 140px;" id="submit-button">
+                                    Hantar<i class="bi bi-check-circle ms-2"></i>
+                                </button>
+                            </div>
                         </div>                                
                     </form>
                 </div>
@@ -1001,6 +1005,43 @@ document.addEventListener('DOMContentLoaded', function() {
             this.value = this.value.toUpperCase();
         });
     }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const backHomeBtn = document.querySelector('.back-home');
+    const prevBtn = document.querySelector('.prev-step');
+    
+    // Function to update button visibility
+    function updateButtonVisibility(currentStep) {
+        if (currentStep === 1) {
+            backHomeBtn.style.display = 'inline-block';
+            prevBtn.style.display = 'none';
+        } else {
+            backHomeBtn.style.display = 'none';
+            prevBtn.style.display = 'inline-block';
+        }
+    }
+    
+    // Initial state - show back home button on step 1
+    updateButtonVisibility(1);
+    
+    // Create a MutationObserver to watch for changes in the active step
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.target.classList.contains('active')) {
+                const currentStep = parseInt(mutation.target.getAttribute('data-step'));
+                updateButtonVisibility(currentStep);
+            }
+        });
+    });
+
+    // Observe all step elements for class changes
+    document.querySelectorAll('.step').forEach(function(step) {
+        observer.observe(step, {
+            attributes: true,
+            attributeFilter: ['class']
+        });
+    });
 });
 </script>
 <?php require_once '../app/views/layouts/footer.php'; ?>
